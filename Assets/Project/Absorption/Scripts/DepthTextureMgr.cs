@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-public class UsingDepthMaps : MonoBehaviour {
+public class DepthTextureMgr : MonoBehaviour {
 
     public Camera depthCamera;
 
     public Shader shader;
 
-	// Use this for initialization
 	void Start () {
 		
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
 	}
