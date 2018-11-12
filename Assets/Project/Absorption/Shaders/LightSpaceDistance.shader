@@ -2,14 +2,12 @@
 {
 	Properties
 	{
-		_Scale("Scale", Range(0,2)) = 1.5
+		_Scale("Scale", Range(0,2)) = 0.02
 	}
 
 	SubShader
 	{
 		Tags { "RenderType" = "Opaque" }
-
-		Cull Off
 
 		LOD 100
 
@@ -21,7 +19,7 @@
 
 			#include "UnityCG.cginc"
 
-			matrix cameraMatrix;
+			matrix global_cameraMatrix;
 			float _Scale;
 
 			struct appdata
@@ -41,9 +39,9 @@
 			{
 				v2f o;
 				o.vertex = UnityObjectToClipPos(v.vertex);
-				float4 worldPos = mul(unity_ObjectToWorld, v.vertex + v.normal * _Scale);
+				float4 worldPos = mul(unity_ObjectToWorld, v.vertex);
 
-				o.dist = length(mul(cameraMatrix, worldPos));
+				o.dist = length(mul(global_cameraMatrix, worldPos));
 
 				return o;
 			}
